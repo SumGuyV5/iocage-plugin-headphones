@@ -8,12 +8,12 @@ git clone https://github.com/rembo10/headphones.git
 cd headphones
 
 cp init-scripts/init.freebsd /usr/local/etc/rc.d/headphones
-chmod 555 /usr/local/etc/rc.d/headphones
+chmod 755 /usr/local/etc/rc.d/headphones
 
 pw user add _sabnzbd -c _sabnzbd -u 710 -d /nonexistent -s /usr/bin/nologin
 chown -R _sabnzbd:_sabnzbd /usr/local/headphones
 
-ln -sf /usr/local/bin/python2.7 /usr/local/bin/python
+ln -sf /usr/local/bin/python3 /usr/local/bin/python
 
 sysrc headphones_enable=YES
 
@@ -29,4 +29,4 @@ sed -i' ' -e s:'http_host =.*:http_host = 0.0.0.0:g' config.ini
 service headphones start
 
 echo -e "Headphones now installed.\n" > /root/PLUGIN_INFO
-echo -e "\nGo to $IP_ADDRESS:8181\n" >> /root/PLUGIN_INFO
+echo -e "\nGo to http://$IP_ADDRESS:8181\n" >> /root/PLUGIN_INFO
